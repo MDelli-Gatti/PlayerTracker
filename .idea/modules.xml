@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayerTracker.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayerTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayerTracker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayerTracker_main.iml" group="PlayerTracker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayerTracker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayerTracker_test.iml" group="PlayerTracker" />
+    </modules>
+  </component>
+</project>
