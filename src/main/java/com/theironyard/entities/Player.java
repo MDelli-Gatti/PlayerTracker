@@ -33,6 +33,16 @@ public class Player {
     public Player() {
     }
 
+    public Player(int id, String name, String team, String position, int number, String comments, User user) {
+        this.id = id;
+        this.name = name;
+        this.team = team;
+        this.position = position;
+        this.number = number;
+        this.comments = comments;
+        this.user = user;
+    }
+
     public Player(String name, String team, String position, int number, String comments, User user) {
         this.name = name;
         this.team = team;

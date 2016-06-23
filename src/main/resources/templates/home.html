@@ -28,17 +28,26 @@ Hello, {{.}}!
 </form>
 {{/username}}
 
-<ol>
+<ul>
     {{#players}}
-    <li><b>{{name}}</b> - {{team}} - {{position}} - {{number}} - {{comments}}
+    <li><b>Name:</b> {{name}} - <b>Team:</b> {{team}} - <b>Position:</b> {{position}} - <b>Number:</b> {{number}} - <b>Additional Comments:</b> {{comments}}
         {{#username}}
         <form action="/delete-player" method="post" style="display: inline-block">
             <input type="hidden" name="id" value="{{id}}"/>
             <button type="submit">Delete Player</button>
         </form>
+        <form action="edit-player" method="post">
+            <input type="text" name="name" value="{{name}}">
+            <input type="text" name="team" value="{{team}}">
+            <input type="text" name="position" value="{{position}}">
+            <input type="text" name="number" value="{{number}}">
+            <input type="text" name="comments" value="{{comments}}">
+            <input type="hidden" name="id" value="{{id}}"/>
+            <button type="submit">Edit Player</button>
+        </form>
         {{/username}}
     </li>
     {{/players}}
-</ol>
+</ul>
 </body>
 </html>

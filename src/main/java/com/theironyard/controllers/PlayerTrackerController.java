@@ -68,4 +68,13 @@ public class PlayerTrackerController {
         players.delete(id);
         return "redirect:/";
     }
+
+    @RequestMapping(path = "edit-player", method = RequestMethod.POST)
+    public String editPlayer(int id, HttpSession session, String name, String team, String position, int number, String comments){
+        String username = (String) session.getAttribute("username");
+        User user = users.findByUsername(username);
+        Player player = new Player(id, name, team, position, number, comments, user);
+        players.save(player);
+        return "redirect:/";
+    }
 }
