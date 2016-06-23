@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Tracker</title>
+</head>
+<body>
+{{^username}}
+<form action="/login" method="post">
+    <input type="text" name="username" placeholder="Username"/>
+    <input type="password" name="password" placeholder="Password"/>
+    <button type="submit">Login</button>
+</form>
+{{/username}}
+
+{{#username}}
+Hello, {{.}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<form action="create-player" method="post">
+    <input type="text" name="name" placeholder="Player Name">
+    <input type="text" name="team" placeholder="Player Team">
+    <input type="text" name="position" placeholder="Player Position">
+    <input type="text" name="number" placeholder="Player Number">
+    <input type="text" name="comments" placeholder="Comments">
+    <button type="submit">Add Player</button>
+</form>
+{{/username}}
+
+<ol>
+    {{#players}}
+    <li><b>{{name}}</b> - {{team}} - {{position}} - {{number}} - {{comments}}
+        {{#username}}
+        <form action="/delete-player" method="post" style="display: inline-block">
+            <input type="hidden" name="id" value="{{id}}"/>
+            <button type="submit">Delete Player</button>
+        </form>
+        {{/username}}
+    </li>
+    {{/players}}
+</ol>
+</body>
+</html>
