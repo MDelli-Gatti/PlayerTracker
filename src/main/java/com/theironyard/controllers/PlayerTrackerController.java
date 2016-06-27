@@ -55,25 +55,36 @@ public class PlayerTrackerController {
     }
 
     @RequestMapping(path = "create-player", method = RequestMethod.POST)
-    public String createPlayer(HttpSession session, String name, String team, String position, int number, String comments){
+    public String createPlayer(HttpSession session, String name, String team, String position, int number, String comments) throws Exception {
         String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception("not logged in");
+        }
         User user = users.findByUsername(username);
-        Player player = new Player(name, team, position, number, comments, user);
+        Player player = new Player(name, team, position, number, comments, username, user);
         players.save(player);
         return "redirect:/";
     }
 
     @RequestMapping(path = "delete-player", method = RequestMethod.POST)
-    public String deletePlayer(int id){
+    public String deletePlayer(HttpSession session, int id) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception("not logged in");
+        }
         players.delete(id);
         return "redirect:/";
     }
 
     @RequestMapping(path = "edit-player", method = RequestMethod.POST)
-    public String editPlayer(int id, HttpSession session, String name, String team, String position, int number, String comments){
+    public String editPlayer(int id, HttpSession session, String name, String team, String position, int number, String comments) throws Exception {
         String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception("not logged in");
+        }
+        //get author
         User user = users.findByUsername(username);
-        Player player = new Player(id, name, team, position, number, comments, user);
+        Player player = new Player(id, name, team, position, number, comments, username, user);
         players.save(player);
         return "redirect:/";
     }

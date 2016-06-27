@@ -27,29 +27,42 @@ public class Player {
     @Column
     String comments;
 
+    @Column(nullable = false)
+    String author;
+
     @ManyToOne
     User user;
 
     public Player() {
     }
 
-    public Player(int id, String name, String team, String position, int number, String comments, User user) {
+    public Player(int id, String name, String team, String position, int number, String comments, String author, User user) {
         this.id = id;
         this.name = name;
         this.team = team;
         this.position = position;
         this.number = number;
         this.comments = comments;
+        this.author = author;
         this.user = user;
     }
 
-    public Player(String name, String team, String position, int number, String comments, User user) {
+    public Player(String name, String team, String position, int number, String comments, String author, User user) {
         this.name = name;
         this.team = team;
         this.position = position;
         this.number = number;
         this.comments = comments;
+        this.author = author;
         this.user = user;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public int getId() {
